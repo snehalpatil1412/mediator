@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import Tesseract from 'tesseract.js';
 
+
 function ImageToText() {
   const [text, setText] = useState('');
   const [loading, setLoading] = useState(false);
