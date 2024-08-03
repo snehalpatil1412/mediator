@@ -1,71 +1,84 @@
 // Home.js
-import React from "react";
-import { useNavigate } from "react-router-dom";
-//hefmndsbj
-function Home() {
-  const navigate = useNavigate();
+import styled from "styled-components";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import SpeechToText from "./SpeechToText.js";
+import TextToSpeech from "./TextToSpeech.js";
+import ImageToText from "./ImageToText.js";
+import Translator from "./Translator";
+import PageNotFound from "./PageNotFound";
 
-  const speechtotext = () => {
-    navigate("/speechtotext");
-  };
-  const texttospeech = () => {
-    navigate("/texttospeech");
-  };
-  const translate = () => {
-    navigate("/translate");
-  };
-  const imagetotext = () => {
-    navigate("/imagetotext");
-  };
+import { 
+  Text,
+  Button,
+  Tabs,
+  Tab,
+  TabList,
+  TabPanels,
+  TabPanel, 
+} from '@chakra-ui/react';
+
+function Home() {
+  const navItems = [
+    {
+      label: "SpeechToText",
+      href: "speechtotext",
+    },
+    {
+      label: "TextToSpeech",
+      href: "texttospeech",
+    },
+    {
+      label: "Translator",
+      href: "translator",
+    },
+    {
+      label: "PdftoText",
+      href: "imagetotext",
+    },
+  ];
 
   return (
     <>
-      <h1 style={{textAlign:"center"}}>Mediator</h1>
-      
-      <div>
-      
-      <div class="row row-cols-1 row-cols-md-4 g-4">
-      <div class="col">
-      <div className="card text-center mb-3" style={{ width: "100%" ,height: "150%" }}>
-        <div className="card-body">
-          <h5 className="card-title">Speech ToText</h5>
-          <p className="card-text"> converts speech into a text</p>
-          <button className="btn btn-primary" onClick={speechtotext}>Speech to text</button>
-        </div>
-      </div>
-      </div>
-      <div class="col">
-      <div className="card text-center mb-3" style={{ width: "100%" ,height: "150%" }}>
-        <div className="card-body">
-          <h5 className="card-title">text to speech</h5>
-          <p className="card-text"> converts text into a audible speech</p>
-          <button className="btn btn-primary" onClick={texttospeech}>Text to Speech</button>
-        </div>
-      </div>
-      </div>
-      
-     <div class="col">
-      <div className="card text-center mb-3" style={{ width: "100%" ,height: "150%" }}>
-        <div className="card-body">
-          <h5 className="card-title">translate</h5>
-          <p className="card-text"> translates any language into any specific specified language</p>
-          <button  className="btn btn-primary" onClick={translate}>Translate</button>
-        </div>
-      </div>
-      </div>
-      <div class="col">
-      <div className="card text-center mb-3" style={{ width: "100%" ,height: "150%" }}>
-        <div className="card-body">
-          <h5 className="card-title">ImageToText</h5>
-          <p className="card-text"> converts image into a text</p>
-          <button className="btn btn-primary" onClick={imagetotext}>continue</button>
-        </div>
-      </div>
-      </div>
-      </div>
-      </div>
+      <Tabs variant='soft-rounded' colorScheme='blue'>
+        <TabList>
+          <Tab>Speech To Text</Tab>
+          <Tab>Text to Speech</Tab>
+          <Tab>Translate</Tab>
+          <Tab>Pdf text extraction</Tab>
+        </TabList>
+        <TabPanels>
+          <TabPanel>
+            <Contain>
+              <SpeechToText navItems={navItems} />
+            </Contain>
+          </TabPanel>
+          <TabPanel>
+            <Contain>
+              <TextToSpeech navItems={navItems} />
+            </Contain>
+          </TabPanel>
+          <TabPanel>
+            <Contain>
+              <Translator navItems={navItems} />
+            </Contain>
+          </TabPanel>
+          <TabPanel>
+            <Contain>
+              <ImageToText navItems={navItems} />
+            </Contain>
+          </TabPanel>
+        </TabPanels>
+      </Tabs>
     </>
   );
 }
 
 export default Home;
+
+const Contain = styled.div`
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
