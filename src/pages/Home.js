@@ -7,6 +7,8 @@ import TextToSpeech from "./TextToSpeech.js";
 import ImageToText from "./ImageToText.js";
 import Translator from "./Translator";
 import PageNotFound from "./PageNotFound";
+import PdfToDoc from "./PdfToDoc.js";
+import DocToPdf from "./DocToPdf.js";
 
 import { 
   Text,
@@ -36,6 +38,15 @@ function Home() {
       label: "PdftoText",
       href: "imagetotext",
     },
+    {
+      label: "PdfToDoc",
+      href: "pdftodoc",
+    },
+    {
+      label: "DocToPdf",
+      href: "doctopdf",
+    },
+  
   ];
 
   return (
@@ -46,6 +57,8 @@ function Home() {
           <Tab>Text to Speech</Tab>
           <Tab>Translate</Tab>
           <Tab>Pdf text extraction</Tab>
+          <Tab>Pdf to Doc</Tab>
+          <Tab>Doc to Pdf</Tab>
         </TabList>
         <TabPanels>
           <TabPanel>
@@ -66,6 +79,16 @@ function Home() {
           <TabPanel>
             <Contain>
               <ImageToText navItems={navItems} />
+            </Contain>
+          </TabPanel>
+          <TabPanel>
+            <Contain>
+              <PdfToDoc navItems={navItems} />
+            </Contain>
+          </TabPanel>
+          <TabPanel>
+            <Contain>
+              <DocToPdf navItems={navItems} />
             </Contain>
           </TabPanel>
         </TabPanels>
