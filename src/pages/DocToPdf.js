@@ -1,5 +1,4 @@
-import React from 'react'
-
+import React from 'react';
 const DocToPdf = () => {
   return (
     <div>
