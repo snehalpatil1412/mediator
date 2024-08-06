@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
+
 function SpeechToText() {
   const [listening, setListening] = useState(false);
   const [transcript, setTranscript] = useState('');
